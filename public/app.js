@@ -48,21 +48,21 @@ console.log("This is working");
     myConnector.getData = function (table, doneCallback) {
 
         let tableData = [];
-    var i = 0;
+        var i = 0;
 
-    $.getJSON(
-      "https://data.rivm.nl/covid-19/COVID-19_aantallen_gemeente_cumulatief.json",
-      function (resp) {
+        $.getJSON(
+            "https://data.rivm.nl/covid-19/COVID-19_aantallen_gemeente_cumulatief.json",
+            function (resp) {
         // Iterate over the JSON object
-        for (i = 0, len = resp.length; i < len; i++) {
-          tableData.push({
-            Date_of_report: resp[i].Date_of_report,
-            Municipality_code: resp[i].Municipality_code,
-            Municipality_name: resp[i].Municipality_name,
-            Province: resp[i].Province,
-            Total_reported: resp[i].Total_reported,
-            Hospital_admission: resp[i].Hospital_admission,
-            Deceased: resp[i].Deceased,
+            for (i = 0, len = resp.length; i < len; i++) {
+                tableData.push({
+                    Date_of_report: resp[i].Date_of_report,
+                    Municipality_code: resp[i].Municipality_code,
+                    Municipality_name: resp[i].Municipality_name,
+                    Province: resp[i].Province,
+                    Total_reported: resp[i].Total_reported,
+                    Hospital_admission: resp[i].Hospital_admission,
+                    Deceased: resp[i].Deceased,
           });
         }
         table.appendRows(tableData);
@@ -75,7 +75,7 @@ console.log("This is working");
     tableau.registerConnector(myConnector);
 })();
 
-document.querySelector("#getData").addEventListener('click',getData)
+document.querySelector("#getData").addEventListener("click",getData)
 
 function getData() {
     tableau.connectionName = "Dutch Corona Numbers";
